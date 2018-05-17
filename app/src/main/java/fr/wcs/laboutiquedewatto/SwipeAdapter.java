@@ -1,18 +1,18 @@
 package fr.wcs.laboutiquedewatto;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +36,10 @@ public class SwipeAdapter extends ArrayAdapter<String> {
 
         ImageView profileImage = convertView.findViewById(R.id.iv_swipe);
         Bitmap bitmap = getBitmapFromURL(image);
-        profileImage.setImageBitmap(bitmap);
+        RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(null, bitmap);
+        drawable.setCircular(true);
+
+        profileImage.setImageDrawable(drawable);
 
 
         return convertView;
