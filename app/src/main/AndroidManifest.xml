@@ -12,7 +12,8 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".ConnexionActivity">
+        <activity android:name=".ConnexionActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
