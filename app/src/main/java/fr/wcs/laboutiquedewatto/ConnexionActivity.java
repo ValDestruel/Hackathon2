@@ -34,8 +34,6 @@ public class ConnexionActivity extends AppCompatActivity {
         final TextView textViewOr = findViewById(R.id.tv_or);
 
 
-
-
         imageViewPassword2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

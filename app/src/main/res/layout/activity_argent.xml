@@ -1,9 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ArgentActivity">
+
+    <ImageView
+        android:id="@+id/imageView_retour"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/wattocheck" />
+
+    <ImageView
+        android:id="@+id/imageView_stripe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:alpha="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_retour"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/image_stripe_widget" />
+
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="172dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="102dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="@string/e_mail"
+        android:textColorHint="#000000"
+        android:inputType="textEmailAddress"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_stripe" />
+
+    <EditText
+        android:id="@+id/editText_card"
+        android:layout_width="175dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="11dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="@string/xxxx_xxxx_xxxx_xxxx"
+        android:inputType="numberPassword"
+        android:textSize="12dp"
+        android:textColorHint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
+
+    <EditText
+        android:id="@+id/editText_date"
+        android:layout_width="71dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="114dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginStart="124dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="@string/mm_yyyy"
+        android:inputType="date"
+        android:textSize="12dp"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_stripe"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_crypto"
+        android:layout_width="74dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="118dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="@string/code"
+        android:inputType="numberPassword"
+        android:textSize="12dp"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_stripe"
+        app:layout_constraintHorizontal_bias="0.302"
+        app:layout_constraintStart_toEndOf="@+id/editText_date" />
+
+    <TextView
+        android:id="@+id/textView_achat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/achat_version_compl_te"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_stripe" />
+
+    <TextView
+        android:id="@+id/textView_prix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/montant_1_000_000_000"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_stripe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_validation"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:alpha="0"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>

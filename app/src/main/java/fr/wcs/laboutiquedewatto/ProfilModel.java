@@ -12,7 +12,8 @@ public class ProfilModel {
     private String hairColor;
     private String eyeColor;
 
-    public ProfilModel() {}
+    public ProfilModel() {
+    }
 
     public ProfilModel(String name, String image) {
         this.name = name;

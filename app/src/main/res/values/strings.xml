@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">LaBoutiqueDeWatto</string>
+    <string name="app_name">La Boutique De Watto</string>
+    <string name="montant_1_000_000_000">Acheter</string>
+    <string name="achat_version_compl_te">1 crédit d\'esclave = 100 dataries</string>
+    <string name="code">***</string>
+    <string name="mm_yyyy">MM/yyyy</string>
+    <string name="xxxx_xxxx_xxxx_xxxx">xxxx/xxxx/xxxx/xxxx</string>
+    <string name="e_mail">Coordonnées galactique</string>
+    <string name="paiement">Paiement refusé !</string>
 </resources>
