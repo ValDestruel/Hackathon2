@@ -18,6 +18,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ConnexionActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+
         <activity android:name=".ShopActivity">
 
         </activity>
