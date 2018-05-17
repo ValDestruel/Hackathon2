@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,21 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-      ref.addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-              for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                  String image = snapshot.child("image").getValue(String.class);
-                  al.add(image);
-                  arrayAdapter.notifyDataSetChanged();
-              }
-          }
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String image = snapshot.child("image").getValue(String.class);
+                    al.add(image);
+                    arrayAdapter.notifyDataSetChanged();
+                }
+            }
 
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-          }
-      });
+            }
+        });
 
         /*fonction swipe*/
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -70,16 +69,19 @@ public class MainActivity extends AppCompatActivity {
                 al.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
+
             /*action déclenché au passage a gauche de la carte*/
             @Override
             public void onLeftCardExit(Object dataObject) {
 
             }
+
             /*action déclench au passage a droite de la carte*/
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
             }
+
             /*permet de rajouter du contenu d'apres ce que je comprends pour le moment*/
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         /** Partie menu Circle**/
         //Image bouton Menu
         ImageView iconMenu = new ImageView(this);
-        iconMenu.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.button_action_dark_touch));
+        iconMenu.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.etoile));
 
         //creation bouton Menu
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         final SubActionButton liste = listeBuilder.setContentView(ivListe).build();
 
         final ImageView ivArgent = new ImageView(this);
-        ivArgent.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.button_sub_action));
+        ivArgent.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.dataries));
         final SubActionButton argent = listeBuilder.setContentView(ivArgent).build();
 
         Resources ressource = getResources();
@@ -157,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intentListe = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent intentListe = new Intent(MainActivity.this, ShopActivity.class);
                 startActivity(intentListe);
             }
         });

@@ -7,12 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,8 +53,6 @@ public class SwipeAdapter extends ArrayAdapter<String> {
             return null;
         }
     }
-
-
 
 
 }
