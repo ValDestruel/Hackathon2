@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int i;
     int mStratAngle = 180;
     int mEndAngle = 270;
     FloatingActionMenu mActionMenu;
@@ -74,10 +73,7 @@ public class MainActivity extends AppCompatActivity {
             /*action déclenché au passage a gauche de la carte*/
             @Override
             public void onLeftCardExit(Object dataObject) {
-                //Do something on the left!
-                //You also have access to the original object.
-                //If you want to use it just cast it (String) dataObject
-                Toast.makeText(MainActivity.this, "Left!", Toast.LENGTH_SHORT).show();
+
             }
             /*action déclench au passage a droite de la carte*/
             @Override
