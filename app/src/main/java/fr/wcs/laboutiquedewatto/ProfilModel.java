@@ -13,6 +13,7 @@ public class ProfilModel implements Parcelable{
     private String hairColor;
     private String eyeColor;
     private String skinColor;
+    private String price;
 
     public ProfilModel() {
     }
@@ -22,7 +23,7 @@ public class ProfilModel implements Parcelable{
         this.image = image;
     }
 
-    public ProfilModel(String name, String gender, String species, String homeworld, String image, String hairColor, String eyeColor, String skinColor) {
+    public ProfilModel(String name, String gender, String species, String homeworld, String image, String hairColor, String eyeColor, String skinColor, String price) {
         this.name = name;
 
         this.gender = gender;
@@ -32,6 +33,7 @@ public class ProfilModel implements Parcelable{
         this.hairColor = hairColor;
         this.eyeColor = eyeColor;
         this.skinColor = skinColor;
+        this.price = price;
     }
 
     protected ProfilModel(Parcel in) {
@@ -43,6 +45,7 @@ public class ProfilModel implements Parcelable{
         hairColor = in.readString();
         eyeColor = in.readString();
         skinColor = in.readString();
+        price = in.readString();
     }
 
     public static final Creator<ProfilModel> CREATOR = new Creator<ProfilModel>() {
@@ -121,6 +124,14 @@ public class ProfilModel implements Parcelable{
         this.skinColor = skinColor;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -136,5 +147,6 @@ public class ProfilModel implements Parcelable{
         dest.writeString(hairColor);
         dest.writeString(eyeColor);
         dest.writeString(skinColor);
+        dest.writeString(price);
     }
 }

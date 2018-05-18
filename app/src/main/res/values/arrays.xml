@@ -7,7 +7,7 @@
     </string-array>
 
     <string-array name="planet">
-        <item>Planète d'origine</item>
+        <item>Planète</item>
         <item>Tatooine</item>
         <item>Naboo</item>
         <item>Alderaan</item>
@@ -60,7 +60,7 @@
     </string-array>
 
     <string-array name="species">
-        <item>Species</item>
+        <item>Espèce</item>
         <item>Human</item>
         <item>Droid</item>
         <item>Wookie</item>

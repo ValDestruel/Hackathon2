@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -30,15 +31,17 @@ public class ResultAdapter extends ArrayAdapter<ProfilModel> {
         TextView profilEye = convertView.findViewById(R.id.eye);
         TextView profilHair = convertView.findViewById(R.id.hair);
         TextView profilSkin = convertView.findViewById(R.id.skin);
+        TextView profilPrice = convertView.findViewById(R.id.price);
         ImageView profilImage = convertView.findViewById(R.id.image);
 
 
         profilName.setText(profile.getName());
         profilDesc.setText(String.format("%s %s de %s", profile.getGender(), profile.getSpecies(), profile.getHomeworld()));
-        profilEye.setText(profile.getEyeColor());
-        profilHair.setText(profile.getHairColor());
-        profilSkin.setText(profile.getSkinColor());
-        Glide.with(getContext()).load(profile.getImage()).into(profilImage);
+        profilEye.setText(String.format("Yeux : %s", profile.getEyeColor()));
+        profilHair.setText(String.format("Cheveux : %s", profile.getHairColor()));
+        profilSkin.setText(String.format("Peau : %s", profile.getSkinColor()));
+        profilPrice.setText(profile.getPrice());
+        Glide.with(getContext()).load(profile.getImage()).apply(RequestOptions.circleCropTransform()).into(profilImage);
 
 
         return convertView;

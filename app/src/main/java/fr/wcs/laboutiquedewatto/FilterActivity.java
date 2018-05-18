@@ -28,6 +28,7 @@ public class FilterActivity extends AppCompatActivity {
     String name;
     String gender;
     String image;
+    String price;
 
     String genderA;
     String genderB;
@@ -66,6 +67,7 @@ public class FilterActivity extends AppCompatActivity {
                     gender = snapshot.child("gender").getValue(String.class);
                     name = snapshot.child("name").getValue(String.class);
                     image = snapshot.child("image").getValue(String.class);
+                    price = snapshot.child("price").getValue(String.class);
 
                     if (snapshot.hasChild("homeworld")) {
                         if (snapshot.child("homeworld").hasChild("0")) {
@@ -89,7 +91,7 @@ public class FilterActivity extends AppCompatActivity {
                         species = snapshot.child("species").getValue(String.class);
                     }
 
-                    allProfiles.add(new ProfilModel(name, gender, species, planet, image, hairColor, eyeColor, skinColor));
+                    allProfiles.add(new ProfilModel(name, gender, species, planet, image, hairColor, eyeColor, skinColor, price));
 
 
 
@@ -120,6 +122,13 @@ public class FilterActivity extends AppCompatActivity {
         final Spinner hairSpinner = findViewById(R.id.hair_filter);
         final Spinner skinSpinner = findViewById(R.id.skin_filter);
         final Spinner speciesSpinner = findViewById(R.id.species_filter);
+
+        genderSpinner.setSelection(0);
+        planetSpinner.setSelection(0);
+        eyeSpinner.setSelection(0);
+        hairSpinner.setSelection(0);
+        skinSpinner.setSelection(0);
+        speciesSpinner.setSelection(0);
 
 
         genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

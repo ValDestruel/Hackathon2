@@ -10,6 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Random;
+
 
 public class ConnexionActivity extends AppCompatActivity {
 
@@ -22,6 +28,22 @@ public class ConnexionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
+
+
+
+
+       final FirebaseAuth auth = FirebaseAuth.getInstance();
+
+
+
+
+
+
+
+
+
+
+
         final EditText editTextPseudo = findViewById(R.id.et_pseudo);
         final EditText editTextPassword = findViewById(R.id.et_password);
         final EditText editTextPassword2 = findViewById(R.id.et_password2);
@@ -32,7 +54,8 @@ public class ConnexionActivity extends AppCompatActivity {
         final Button buttonConnexion = findViewById(R.id.b_log_in);
         final Button buttonMember = findViewById(R.id.b_create);
         final TextView textViewOr = findViewById(R.id.tv_or);
-
+        String email = editTextPseudo.getText().toString();
+        String mdp = editTextPassword.getText().toString();
 
         imageViewPassword2.setOnClickListener(new View.OnClickListener() {
             @Override

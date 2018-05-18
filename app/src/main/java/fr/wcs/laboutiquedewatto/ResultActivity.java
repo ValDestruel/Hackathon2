@@ -19,7 +19,6 @@ public class ResultActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         final ArrayList<ProfilModel> profils = intent.getParcelableArrayListExtra("Profils");
         final ResultAdapter adapter = new ResultAdapter(this, profils);
-        //adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
     }
 
