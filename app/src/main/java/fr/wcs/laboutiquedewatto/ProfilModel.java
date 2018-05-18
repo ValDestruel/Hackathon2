@@ -12,7 +12,13 @@ public class ProfilModel {
     private String hairColor;
     private String eyeColor;
 
-    public ProfilModel() {}
+    public ProfilModel() {
+    }
+
+    public ProfilModel(String name, String image) {
+        this.name = name;
+        this.image = image;
+    }
 
     public ProfilModel(String name, double height, int mass, String gender, String species, String homeworld, String image, String hairColor, String eyeColor) {
         this.name = name;
