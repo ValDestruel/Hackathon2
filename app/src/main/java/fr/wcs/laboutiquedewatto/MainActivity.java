@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intentProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent intentProfile = new Intent(MainActivity.this, FilterActivity.class);
                 startActivity(intentProfile);
             }
         });

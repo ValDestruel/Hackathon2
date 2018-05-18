@@ -1,16 +1,19 @@
 package fr.wcs.laboutiquedewatto;
 
-public class ProfilModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ProfilModel implements Parcelable{
 
     private String name;
-    private double height;
-    private int mass;
     private String gender;
     private String species;
     private String homeworld;
     private String image;
     private String hairColor;
     private String eyeColor;
+    private String skinColor;
+    private String price;
 
     public ProfilModel() {
     }
@@ -20,17 +23,42 @@ public class ProfilModel {
         this.image = image;
     }
 
-    public ProfilModel(String name, double height, int mass, String gender, String species, String homeworld, String image, String hairColor, String eyeColor) {
+    public ProfilModel(String name, String gender, String species, String homeworld, String image, String hairColor, String eyeColor, String skinColor, String price) {
         this.name = name;
-        this.height = height;
-        this.mass = mass;
+
         this.gender = gender;
         this.species = species;
         this.homeworld = homeworld;
         this.image = image;
         this.hairColor = hairColor;
         this.eyeColor = eyeColor;
+        this.skinColor = skinColor;
+        this.price = price;
     }
+
+    protected ProfilModel(Parcel in) {
+        name = in.readString();
+        gender = in.readString();
+        species = in.readString();
+        homeworld = in.readString();
+        image = in.readString();
+        hairColor = in.readString();
+        eyeColor = in.readString();
+        skinColor = in.readString();
+        price = in.readString();
+    }
+
+    public static final Creator<ProfilModel> CREATOR = new Creator<ProfilModel>() {
+        @Override
+        public ProfilModel createFromParcel(Parcel in) {
+            return new ProfilModel(in);
+        }
+
+        @Override
+        public ProfilModel[] newArray(int size) {
+            return new ProfilModel[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -38,22 +66,6 @@ public class ProfilModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public int getMass() {
-        return mass;
-    }
-
-    public void setMass(int mass) {
-        this.mass = mass;
     }
 
     public String getGender() {
@@ -102,5 +114,39 @@ public class ProfilModel {
 
     public void setEyeColor(String eyeColor) {
         this.eyeColor = eyeColor;
+    }
+
+    public String getSkinColor() {
+        return skinColor;
+    }
+
+    public void setSkinColor(String skinColor) {
+        this.skinColor = skinColor;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(gender);
+        dest.writeString(species);
+        dest.writeString(homeworld);
+        dest.writeString(image);
+        dest.writeString(hairColor);
+        dest.writeString(eyeColor);
+        dest.writeString(skinColor);
+        dest.writeString(price);
     }
 }
