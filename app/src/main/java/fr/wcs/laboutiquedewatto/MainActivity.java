@@ -2,6 +2,7 @@ package fr.wcs.laboutiquedewatto;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Parcelable;
 import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     int mStratAngle = 180;
     int mEndAngle = 270;
     FloatingActionMenu mActionMenu;
+    int index = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +40,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final ArrayList<String> al = new ArrayList<>();
+        final ArrayList<ProfilModel> profilList = new ArrayList<>();
         final SwipeAdapter arrayAdapter = new SwipeAdapter(this, al);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if (!snapshot.child("homeworld").hasChildren()) {
+                        profilList.add(snapshot.getValue(ProfilModel.class));
+                    }
                     String image = snapshot.child("image").getValue(String.class);
                     al.add(image);
                     arrayAdapter.notifyDataSetChanged();
@@ -59,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
           }
       });
 
+        final DatabaseReference dataBought = FirebaseDatabase.getInstance().getReference();
+
         /*fonction swipe*/
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
@@ -70,15 +79,18 @@ public class MainActivity extends AppCompatActivity {
                 al.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
-            /*action déclenché au passage a gauche de la carte*/
+
+            /*action déclenchée au passage à gauche de la carte*/
             @Override
             public void onLeftCardExit(Object dataObject) {
+                index++;
 
             }
-            /*action déclench au passage a droite de la carte*/
+            /*action déclenchée au passage à droite de la carte*/
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
+                ref.child(String.valueOf(index)).child("isBought").setValue(true);
+                index++;
             }
             /*permet de rajouter du contenu d'apres ce que je comprends pour le moment*/
             @Override
@@ -97,8 +109,12 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-
+                Parcelable profil = new ProfilModel(profilList.get(index).getName(),profilList.get(index).getGender(),
+                        profilList.get(index).getSpecies(),profilList.get(index).getHomeworld(), profilList.get(index).getImage(),
+                        profilList.get(index).getHairColor(),profilList.get(index).getEyeColor(),profilList.get(index).getSkinColor(),
+                        profilList.get(index).getPrice());
                 Intent intentProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                intentProfile.putExtra("Profil", profil);
                 startActivity(intentProfile);
 
             }
