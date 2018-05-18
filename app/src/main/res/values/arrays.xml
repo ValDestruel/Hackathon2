@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gender">
+        <item>Genre</item>
+        <item>Male</item>
+        <item>Femelle</item>
+    </string-array>
+
+    <string-array name="planet">
+        <item>Planète d'origine</item>
+        <item>Tatooine</item>
+        <item>Naboo</item>
+        <item>Alderaan</item>
+        <item>Stewjon</item>
+        <item>Eriadu</item>
+        <item>Kashyyk</item>
+        <item>Corellia</item>
+        <item>Rodia</item>
+        <item>Bestine</item>
+        <item>Kamino</item>
+        <item>Trandosha</item>
+        <item>Socorro</item>
+        <item>Bespin</item>
+        <item>Mon cala</item>
+        <item>Chandrila</item>
+        <item>Endor</item>
+        <item>Sullust</item>
+        <item>Coruscant</item>
+        <item>Neimoidia</item>
+        <item>Malastare</item>
+        <item>Dathomir</item>
+        <item>Ryloth</item>
+        <item>Aleen</item>
+        <item>Vulpter</item>
+        <item>Troiken</item>
+        <item>Tund</item>
+        <item>Haruun kal</item>
+        <item>Cerea</item>
+        <item>Glee anselm</item>
+        <item>Nar shaddaa</item>
+        <item>Iktotch</item>
+        <item>Quermia</item>
+        <item>Dorin</item>
+        <item>Champala</item>
+        <item>Geonosis</item>
+        <item>Mirial</item>
+        <item>Serenno</item>
+        <item>Concord dawn</item>
+        <item>Zolan</item>
+        <item>Ojom</item>
+        <item>Skako</item>
+        <item>Scipio</item>
+        <item>Shili</item>
+        <item>Kalee</item>
+        <item>Umbara</item>
+        <item>Utapau</item>
+        <item>Jakku</item>
+        <item>Yavin 4</item>
+        <item>Parnassos</item>
+    </string-array>
+
+    <string-array name="species">
+        <item>Species</item>
+        <item>Human</item>
+        <item>Droid</item>
+        <item>Wookie</item>
+        <item>Rodian</item>
+        <item>Hutt</item>
+        <item>Yoda's species</item>
+        <item>Trandoshan</item>
+        <item>Mon calamari</item>
+        <item>Ewok</item>
+        <item>Sullustan</item>
+        <item>Neimoidian</item>
+        <item>Gungan</item>
+        <item>Dug</item>
+        <item>Dathomirian zabrak</item>
+        <item>Twi'lek</item>
+        <item>Allena</item>
+        <item>Vulptereen</item>
+        <item>Xexto</item>
+        <item>Toong</item>
+        <item>Cerean</item>
+        <item>Nautolan</item>
+        <item>Genre</item>
+        <item>Iridonian zabrak</item>
+        <item>Tholothian</item>
+        <item>Iktotchi</item>
+        <item>Quermian</item>
+        <item>Kel dor</item>
+        <item>Chagrian</item>
+        <item>Geonosian</item>
+        <item>Mirialan</item>
+        <item>Clawdite</item>
+        <item>Besalisk</item>
+        <item>Kaminoan</item>
+        <item>Skakoan</item>
+        <item>Muun</item>
+        <item>Togruta</item>
+        <item>Kaleesh</item>
+        <item>Umbaran</item>
+        <item>Pau'an</item>
+
+    </string-array>
+
+    <string-array name="eye">
+        <item>Couleur des yeux</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Blue, yellow (dark side)</item>
+        <item>Brown</item>
+        <item>Hazel</item>
+        <item>Gray-blue</item>
+
+    </string-array>
+
+    <string-array name="hair">
+        <item>Couleur des cheveux</item>
+        <item>Blond</item>
+        <item>Brown</item>
+        <item>Black</item>
+        <item>Light brown</item>
+        <item>Auburn</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Gold</item>
+        <item>Later none</item>
+    </string-array>
+
+    <string-array name="skin">
+        <item>Couleur de peau</item>
+        <item>Light</item>
+        <item>Gold</item>
+        <item>White</item>
+        <item>Green</item>
+        <item>Fair</item>
+        <item>Tan</item>
+        <item>Metal</item>
+        <item>Dark</item>
+        <item>Brown</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Beige</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Silver</item>
+        <item>Pale</item>
+        <item>Gray</item>
+    </string-array>
+</resources>

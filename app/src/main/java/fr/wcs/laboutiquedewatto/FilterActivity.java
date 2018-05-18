@@ -1,13 +1,15 @@
 package fr.wcs.laboutiquedewatto;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
+import com.bumptech.glide.load.resource.gif.GifDrawableEncoder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,23 @@ public class FilterActivity extends AppCompatActivity {
     String hairColor;
     String skinColor;
     String species;
+    String name;
+    String gender;
+    String image;
+
+    String genderA;
+    String genderB;
+    String planetA;
+    String planetB;
+    String specieA;
+    String specieB;
+    String eyeA;
+    String eyeB;
+    String hairA;
+    String hairB;
+    String skinA;
+    String skinB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +54,19 @@ public class FilterActivity extends AppCompatActivity {
         final ArrayList<String> hairColorFilter = new ArrayList<>();
         final ArrayList<String> skinColorFilter = new ArrayList<>();
         final ArrayList<String> speciesFilter = new ArrayList<>();
+        final ArrayList<ProfilModel> allProfiles = new ArrayList<>();
+        final ArrayList<ProfilModel> selectedProfiles = new ArrayList<>();
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String gender = snapshot.child("gender").getValue(String.class);
+                    gender = snapshot.child("gender").getValue(String.class);
+                    name = snapshot.child("name").getValue(String.class);
+                    image = snapshot.child("image").getValue(String.class);
+
                     if (snapshot.hasChild("homeworld")) {
                         if (snapshot.child("homeworld").hasChild("0")) {
                             planet = snapshot.child("homeworld").child("0").getValue(String.class);
@@ -64,6 +88,10 @@ public class FilterActivity extends AppCompatActivity {
                     if (snapshot.hasChild("species")) {
                         species = snapshot.child("species").getValue(String.class);
                     }
+
+                    allProfiles.add(new ProfilModel(name, gender, species, planet, image, hairColor, eyeColor, skinColor));
+
+
 
                     if (!genderFilter.contains(gender))
                         genderFilter.add(gender);
@@ -93,28 +121,133 @@ public class FilterActivity extends AppCompatActivity {
         final Spinner skinSpinner = findViewById(R.id.skin_filter);
         final Spinner speciesSpinner = findViewById(R.id.species_filter);
 
-        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, genderFilter);
-        ArrayAdapter<String> planetAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, planetFilter);
-        ArrayAdapter<String> eyeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, eyeColorFilter);
-        ArrayAdapter<String> hairAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, hairColorFilter);
-        ArrayAdapter<String> skinAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, skinColorFilter);
-        ArrayAdapter<String> speciesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, speciesFilter);
 
-        genderSpinner.setAdapter(genderAdapter);
-        planetSpinner.setAdapter(planetAdapter);
-        eyeSpinner.setAdapter(eyeAdapter);
-        hairSpinner.setAdapter(hairAdapter);
-        skinSpinner.setAdapter(skinAdapter);
-        speciesSpinner.setAdapter(speciesAdapter);
-
-        genderSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    genderA = allProfiles.get(i).getGender().toLowerCase();
+                    genderB = genderSpinner.getSelectedItem().toString().toLowerCase();
+                    if ((genderA.contains(genderB)) && (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        planetSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedProfiles.clear();
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    planetA = allProfiles.get(i).getHomeworld().toLowerCase();
+                    planetB = planetSpinner.getSelectedItem().toString().toLowerCase();
+                    if (planetA.contains(planetB)&& (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        eyeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    eyeA = allProfiles.get(i).getEyeColor().toLowerCase();
+                    eyeB = eyeSpinner.getSelectedItem().toString().toLowerCase();
+                    if (eyeA.contains(eyeB)&& (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        hairSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    hairA = allProfiles.get(i).getHairColor().toLowerCase();
+                    hairB = hairSpinner.getSelectedItem().toString().toLowerCase();
+                    if (hairA.contains(hairB)&& (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        skinSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    skinA = allProfiles.get(i).getSkinColor().toLowerCase();
+                    skinB = skinSpinner.getSelectedItem().toString().toLowerCase();
+                    if (skinA.contains(skinB)&& (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                for (int i = 0; i < allProfiles.size(); i++) {
+                    specieA = allProfiles.get(i).getSpecies().toLowerCase();
+                    specieB = speciesSpinner.getSelectedItem().toString().toLowerCase();
+                    if (specieA.contains(specieB)&& (!selectedProfiles.contains(allProfiles.get(i)))) {
+                        selectedProfiles.add(allProfiles.get(i));
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
 
+
+
+        final Button search = findViewById(R.id.btn_search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FilterActivity.this, ResultActivity.class);
+                intent.putParcelableArrayListExtra("Profils", selectedProfiles);
+                startActivity(intent);
+                selectedProfiles.clear();
+            }
+        });
 
     }
 }
