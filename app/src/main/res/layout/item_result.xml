@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/fondboutique"
     android:orientation="vertical">
+
 
 
     <ImageView
@@ -28,7 +28,8 @@
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik_mono_one" />
 
     <TextView
         android:id="@+id/desc"
@@ -40,7 +41,8 @@
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        app:fontFamily="sans-serif" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +58,8 @@
             android:gravity="center_horizontal"
             android:text="TextView"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/hair"
@@ -66,7 +69,8 @@
             android:gravity="center_horizontal"
             android:text="TextView"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/skin"
@@ -76,7 +80,8 @@
             android:gravity="center_horizontal"
             android:text="TextView"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:fontFamily="sans-serif" />
 
     </LinearLayout>
 
@@ -101,7 +106,8 @@
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="sans-serif" />
     </LinearLayout>
 
     <View
