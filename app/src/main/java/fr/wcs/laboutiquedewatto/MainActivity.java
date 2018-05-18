@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final ArrayList<String> al = new ArrayList<>();
         final SwipeAdapter arrayAdapter = new SwipeAdapter(this, al);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -52,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+          @Override
+          public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+          }
+      });
 
         /*fonction swipe*/
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -69,19 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 al.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
-
             /*action déclenché au passage a gauche de la carte*/
             @Override
             public void onLeftCardExit(Object dataObject) {
 
             }
-
             /*action déclench au passage a droite de la carte*/
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
             }
-
             /*permet de rajouter du contenu d'apres ce que je comprends pour le moment*/
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
