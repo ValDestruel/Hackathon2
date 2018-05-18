@@ -64,7 +64,7 @@ public class ConnexionActivity extends AppCompatActivity {
                     return;
                 }
 
-                auth.signInWithCustomToken(pseudo).addOnCompleteListener(ConnexionActivity.this, new OnCompleteListener<AuthResult>() {
+                auth.signInAnonymously().addOnCompleteListener(ConnexionActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
