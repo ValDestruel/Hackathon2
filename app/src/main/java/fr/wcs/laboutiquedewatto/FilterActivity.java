@@ -244,9 +244,6 @@ public class FilterActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         final Button search = findViewById(R.id.btn_search);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
