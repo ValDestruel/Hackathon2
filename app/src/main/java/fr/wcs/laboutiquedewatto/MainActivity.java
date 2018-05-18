@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -98,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(MainActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
+
+                Intent intentProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intentProfile);
 
             }
         });
@@ -117,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
         SubActionButton.Builder listeBuilder = new SubActionButton.Builder(this);
 
         final ImageView ivFiltre = new ImageView(this);
-        ivFiltre.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.icon_password));
+        ivFiltre.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.radar));
         final SubActionButton filtre = listeBuilder.setContentView(ivFiltre).build();
 
         final ImageView ivListe = new ImageView(this);
-        ivListe.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.ligne));
+        ivListe.setImageDrawable(ContextCompat.getDrawable(getApplication(), R.drawable.martinet));
         final SubActionButton liste = listeBuilder.setContentView(ivListe).build();
 
         final ImageView ivArgent = new ImageView(this);
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         final SubActionButton argent = listeBuilder.setContentView(ivArgent).build();
 
         Resources ressource = getResources();
-        int valuePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, ressource.getDisplayMetrics());
+        int valuePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 75, ressource.getDisplayMetrics());
 
         DrawerLayout.LayoutParams layoutParam = new DrawerLayout.LayoutParams(valuePx, valuePx);
         filtre.setLayoutParams(layoutParam);
